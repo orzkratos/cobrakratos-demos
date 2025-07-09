@@ -5,6 +5,7 @@ server:
   grpc:
     addr: 0.0.0.0:19000
     timeout: 1s
+  auto_run: true
 data:
   database:
     driver: mysql

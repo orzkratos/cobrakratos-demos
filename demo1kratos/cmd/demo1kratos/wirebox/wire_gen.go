@@ -25,7 +25,7 @@ func wireApp(confData *conf.Data, logger log.Logger) (*WireBox, func(), error) {
 	greeterRepo := data.NewGreeterRepo(dataData, logger)
 	greeterUsecase := biz.NewGreeterUsecase(greeterRepo, logger)
 	greeterService := service.NewGreeterService(greeterUsecase)
-	wireBox := newWireBox(confData, dataData, greeterUsecase, greeterService)
+	wireBox := newWireBox(confData, dataData, greeterRepo, greeterUsecase, greeterService)
 	return wireBox, func() {
 		cleanup()
 	}, nil

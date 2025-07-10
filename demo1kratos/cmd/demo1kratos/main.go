@@ -9,9 +9,10 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware/tracing"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
-	"github.com/orzkratos/demokratos/demo1kratos/cmd/demo1kratos/cfgdata"
+	"github.com/orzkratos/demokratos/demo1kratos/cmd/demo1kratos/cfgpath"
 	"github.com/orzkratos/demokratos/demo1kratos/cmd/demo1kratos/subcmds"
 	"github.com/orzkratos/demokratos/demo1kratos/internal/conf"
+	"github.com/orzkratos/demokratos/demo1kratos/internal/pkg/cfgdata"
 	"github.com/spf13/cobra"
 	"github.com/yyle88/done"
 	"github.com/yyle88/must"
@@ -63,20 +64,20 @@ func main() {
 			//避免还有其它命令以避免是拼写错误
 			mustslice.None(args)
 			//控制是否在根命令下运行逻辑，当然，直接删掉逻辑也能控制不执行，这里只是给个样例
-			if cfg := cfgdata.ParseConfig(); cfg.Server.AutoRun {
+			if cfg := cfgdata.ParseConfig(cfgpath.ConfigPath); cfg.Server.AutoRun {
 				runApp(cfg, logger)
 			}
 		},
 	}
 	// 设置全局参数 所有子命令都可以用
-	rootCmd.PersistentFlags().StringVarP(&cfgdata.ConfigPath, "conf", "c", "./configs", "config path, eg: --conf=config.yaml")
+	rootCmd.PersistentFlags().StringVarP(&cfgpath.ConfigPath, "conf", "c", "./configs", "config path, eg: --conf=config.yaml")
 
 	// 默认命令（运行服务）
 	rootCmd.AddCommand(&cobra.Command{
 		Use:   "run",
 		Short: "Start the application",
 		Run: func(cmd *cobra.Command, args []string) {
-			cfg := cfgdata.ParseConfig()
+			cfg := cfgdata.ParseConfig(cfgpath.ConfigPath)
 			runApp(cfg, logger)
 		},
 	})

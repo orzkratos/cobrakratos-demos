@@ -7,13 +7,10 @@ import (
 	"github.com/yyle88/rese"
 )
 
-// ConfigPath is the config path.
-var ConfigPath string
-
-func ParseConfig() *conf.Bootstrap {
+func ParseConfig(configPath string) *conf.Bootstrap {
 	c := config.New(
 		config.WithSource(
-			file.NewSource(ConfigPath),
+			file.NewSource(configPath),
 		),
 	)
 	defer rese.F0(c.Close)

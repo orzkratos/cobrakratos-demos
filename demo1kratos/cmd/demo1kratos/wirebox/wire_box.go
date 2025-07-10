@@ -11,6 +11,7 @@ import (
 type WireBox struct {
 	ConfData       *conf.Data
 	DataData       *data.Data
+	GreeterRepo    biz.GreeterRepo
 	GreeterUsecase *biz.GreeterUsecase
 	GreeterService *service.GreeterService
 }
@@ -18,12 +19,14 @@ type WireBox struct {
 func newWireBox(
 	confData *conf.Data,
 	dataData *data.Data,
+	greeterRepo biz.GreeterRepo,
 	greeterUsecase *biz.GreeterUsecase,
 	greeterService *service.GreeterService,
 ) *WireBox {
 	return &WireBox{
 		ConfData:       confData,
 		DataData:       dataData,
+		GreeterRepo:    greeterRepo,
 		GreeterUsecase: greeterUsecase,
 		GreeterService: greeterService,
 	}

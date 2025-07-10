@@ -5,9 +5,10 @@ import (
 
 	"github.com/go-kratos/kratos/v2/log"
 	v1 "github.com/orzkratos/demokratos/demo1kratos/api/helloworld/v1"
-	"github.com/orzkratos/demokratos/demo1kratos/cmd/demo1kratos/cfgdata"
+	"github.com/orzkratos/demokratos/demo1kratos/cmd/demo1kratos/cfgpath"
 	"github.com/orzkratos/demokratos/demo1kratos/cmd/demo1kratos/wirebox"
 	"github.com/orzkratos/demokratos/demo1kratos/internal/biz"
+	"github.com/orzkratos/demokratos/demo1kratos/internal/pkg/cfgdata"
 	"github.com/spf13/cobra"
 	"github.com/yyle88/eroticgo"
 	"github.com/yyle88/must"
@@ -19,7 +20,7 @@ func NewShowConfigCmd(logger log.Logger) *cobra.Command {
 		Use:   "config",
 		Short: "Print the config data",
 		Run: func(cmd *cobra.Command, args []string) {
-			cfg := cfgdata.ParseConfig()
+			cfg := cfgdata.ParseConfig(cfgpath.ConfigPath)
 			LOG := log.NewHelper(logger)
 			LOG.Infof("Config: %s", neatjsons.S(cfg))
 		},
@@ -41,7 +42,7 @@ func NewBizGreaterCmd(logger log.Logger) *cobra.Command {
 		Use:   "create-greeter",
 		Short: "create greeter message",
 		Run: func(cmd *cobra.Command, args []string) {
-			cfg := cfgdata.ParseConfig()
+			cfg := cfgdata.ParseConfig(cfgpath.ConfigPath)
 			wireBox, cleanup, err := wirebox.NewWireBox(cfg.Data, logger)
 			must.Done(err)
 			defer cleanup()
@@ -74,7 +75,7 @@ func NewSvcGreaterCmd(logger log.Logger) *cobra.Command {
 		Use:   "say-hello",
 		Short: "say hello to name",
 		Run: func(cmd *cobra.Command, args []string) {
-			cfg := cfgdata.ParseConfig()
+			cfg := cfgdata.ParseConfig(cfgpath.ConfigPath)
 			wireBox, cleanup, err := wirebox.NewWireBox(cfg.Data, logger)
 			must.Done(err)
 			defer cleanup()

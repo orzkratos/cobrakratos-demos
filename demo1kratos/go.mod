@@ -6,16 +6,16 @@ require (
 	github.com/go-kratos/kratos/v2 v2.8.4
 	github.com/google/wire v0.6.0
 	github.com/spf13/cobra v1.9.1
-	github.com/yyle88/done v1.0.26
+	github.com/yyle88/done v1.0.27
 	github.com/yyle88/eroticgo v0.0.4
-	github.com/yyle88/must v0.0.25
+	github.com/yyle88/must v0.0.26
 	github.com/yyle88/neatjson v0.0.12
-	github.com/yyle88/rese v0.0.10
+	github.com/yyle88/rese v0.0.11
 	github.com/yyle88/runpath v1.0.23
 	go.uber.org/automaxprocs v1.6.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20250106144421-5f5ef82da422
 	google.golang.org/grpc v1.71.1
-	google.golang.org/protobuf v1.36.6
+	google.golang.org/protobuf v1.36.7
 )
 
 require (

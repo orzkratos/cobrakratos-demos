@@ -17,6 +17,7 @@ import (
 	"github.com/yyle88/done"
 	"github.com/yyle88/must"
 	"github.com/yyle88/must/mustslice"
+	"github.com/yyle88/rese"
 	_ "go.uber.org/automaxprocs"
 )
 
@@ -105,14 +106,9 @@ func main() {
 }
 
 func runApp(cfg *conf.Bootstrap, logger log.Logger) {
-	app, cleanup, err := wireApp(cfg.Server, cfg.Data, logger)
-	if err != nil {
-		panic(err)
-	}
+	app, cleanup := rese.V2(wireApp(cfg.Server, cfg.Data, logger))
 	defer cleanup()
 
 	// start and wait for stop signal
-	if err := app.Run(); err != nil {
-		panic(err)
-	}
+	must.Done(app.Run())
 }

@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/go-kratos/kratos/v2 v2.8.4
 	github.com/google/wire v0.7.0
-	github.com/spf13/cobra v1.9.1
+	github.com/spf13/cobra v1.10.1
 	github.com/yyle88/done v1.0.27
 	github.com/yyle88/eroticgo v0.0.4
 	github.com/yyle88/must v0.0.26
@@ -28,7 +28,7 @@ require (
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/spf13/pflag v1.0.7 // indirect
+	github.com/spf13/pflag v1.0.9 // indirect
 	github.com/yyle88/erero v1.0.23 // indirect
 	github.com/yyle88/mutexmap v1.0.14 // indirect
 	github.com/yyle88/sure v0.0.40 // indirect

@@ -5,6 +5,7 @@ server:
   grpc:
     addr: 0.0.0.0:29000
     timeout: 1s
+  auto_run: true  # 是否在根命令下自动运行服务
 data:
   database:
     driver: mysql
